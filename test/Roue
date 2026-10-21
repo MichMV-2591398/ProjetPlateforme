@@ -1,0 +1,49 @@
+# Test des moteurs TT avec le TB6612FNG (Arduino Nano ESP32, MicroPython)
+from machine import Pin, PWM
+from time import sleep
+
+# Broches: sérigraphie du Nano -> numéro GPIO
+stby = Pin(7, Pin.OUT)          # D4  -> STBY
+ain1 = Pin(9, Pin.OUT)          # D6  -> AIN1
+ain2 = Pin(10, Pin.OUT)         # D7  -> AIN2
+pwma = PWM(Pin(8), freq=1000)   # D5  -> PWMA
+bin1 = Pin(17, Pin.OUT)         # D8  -> BIN1
+bin2 = Pin(18, Pin.OUT)         # D9  -> BIN2
+pwmb = PWM(Pin(21), freq=1000)  # D10 -> PWMB
+
+MOTEURS = {"A (gauche)": (ain1, ain2, pwma), "B (droit)": (bin1, bin2, pwmb)}
+
+
+def moteur(m, vitesse):
+    """vitesse de -100 (arrière) à 100 (avant), 0 = arrêt"""
+    in1, in2, pwm = m
+    in1.value(vitesse > 0)
+    in2.value(vitesse < 0)
+    pwm.duty(abs(vitesse) * 1023 // 100)  # duty de 0 à 1023
+
+
+def tout_arreter():
+    for m in MOTEURS.values():
+        moteur(m, 0)
+
+
+stby.value(1)  # réveille le pilote (STBY doit être à 1)
+
+try:
+    for nom, m in MOTEURS.items():
+        print("Moteur", nom, ": avant à 60 %")
+        moteur(m, 60)
+        sleep(2)
+        print("arrêt")
+        moteur(m, 0)
+        sleep(1)
+        print("arrière à 60 %")
+        moteur(m, -60)
+        sleep(2)
+        moteur(m, 0)
+        sleep(1)
+finally:
+    tout_arreter()
+    stby.value(0)  # remet le pilote en veille
+
+print("Test terminé")
