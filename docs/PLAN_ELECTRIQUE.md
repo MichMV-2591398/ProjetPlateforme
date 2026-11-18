@@ -3,8 +3,6 @@
 Plateforme : **Arduino Nano ESP32 (ABX00083)**, programmé en MicroPython.
 En MicroPython, on utilise toujours le **numéro GPIO** (ex. `Pin(6)` pour D3).
 
-![Schéma de câblage](schema_cablage.svg)
-
 ## 1. Correspondance avec les exigences de l'énoncé
 
 | Exigence | Composant retenu | Type |
