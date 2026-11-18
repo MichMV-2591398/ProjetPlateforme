@@ -14,7 +14,7 @@
 | Élément demandé | Où le trouver |
 | :--- | :--- |
 | **Description du problème choisi et de la fonction du prototype** | [Section 1](#1-problème-choisi-et-fonction-du-prototype) |
-| **Diagramme fonctionnel du système** | [Section 2](#2-diagramme-fonctionnel) |
+| **Diagramme :** [`docs/diagramme_fonctionnel.png`](docs/diagramme_fonctionnel.png) |
 | **Liste préliminaire des composants** | [Section 4](#4-liste-préliminaire-du-matériel) |
 | **Attribution préliminaire des broches** | [Section 6](#6-branchements-et-numéros-de-broches-attribution-préliminaire) |
 | **Répartition initiale du travail** | [Section 7](#7-répartition-initiale-du-travail) |
