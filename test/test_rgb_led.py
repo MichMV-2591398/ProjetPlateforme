@@ -1,12 +1,12 @@
 # test_rgb_led.py — Test de la LED RVB d'état (cathode commune).
-# Branchements : rouge -> 220 Ω -> D13, vert -> 100 Ω -> A7, bleu -> 100 Ω -> D6,
+# Branchements : rouge -> 220 Ω -> D1, vert -> 100 Ω -> A7, bleu -> 100 Ω -> D6,
 #                patte la plus longue (cathode) -> GND.
-# Chaque couleur s'allume pendant 1,5 s. La DEL intégrée du Nano (D13) s'allume avec le rouge.
+# Chaque couleur s'allume pendant 1,5 s.
 
 from machine import Pin
 from time import sleep_ms
 
-RED_PIN = 48     # D13
+RED_PIN = 43     # D1 (D13 ne fonctionne pas sur notre carte)
 GREEN_PIN = 14   # A7
 BLUE_PIN = 9     # D6
 
